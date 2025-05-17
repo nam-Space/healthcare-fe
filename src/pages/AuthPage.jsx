@@ -1,7 +1,8 @@
+import LoginForm from "components/LoginForm";
+import RegisterForm from "components/RegisterForm";
 import { useState } from "react";
-import { Card, Container, Tab, Tabs } from "react-bootstrap";
-import LoginForm from "../components/LoginForm";
-import RegisterForm from "../components/RegisterForm";
+import { Button, Card, Container, Tab, Tabs } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const AuthPage = () => {
     const [key, setKey] = useState("login");
@@ -24,6 +25,21 @@ const AuthPage = () => {
                             <RegisterForm />
                         </Tab>
                     </Tabs>
+                </Card.Body>
+            </Card>
+            <Card>
+                <Card.Body>
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}
+                    >
+                        <Link to={"/"}>
+                            <Button variant="secondary">Về trang chủ</Button>
+                        </Link>
+                    </div>
                 </Card.Body>
             </Card>
         </Container>

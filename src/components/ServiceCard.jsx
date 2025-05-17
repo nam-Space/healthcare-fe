@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const ServiceCard = ({ title, path }) => {
     const navigate = useNavigate();
     return (
-        <Col md={6} lg={3}>
+        <Col md={6} lg={4}>
             <Card
                 className="h-100 shadow-sm"
                 onClick={() => navigate(path)}
@@ -14,7 +14,7 @@ const ServiceCard = ({ title, path }) => {
                     <Card.Title>{title}</Card.Title>
                     <Card.Text>Truy cập {title}</Card.Text>
                     <Button variant="primary" onClick={() => navigate(path)}>
-                        Go
+                        Vào
                     </Button>
                 </Card.Body>
             </Card>
