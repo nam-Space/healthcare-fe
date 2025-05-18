@@ -7,6 +7,7 @@ import ProfilePage from 'pages/ProfilePage';
 import PatientPage from 'pages/PatientPage';
 import DoctorPage from 'pages/DoctorPage';
 import PharmacistPage from 'pages/PharmacistPage';
+import ChatbotPage from 'pages/ChatbotPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/patients" element={<PatientPage />} />
       <Route path="/doctors" element={<DoctorPage />} />
       <Route path="/pharmacists" element={<PharmacistPage />} />
+      <Route path="/chatbot" element={<ChatbotPage />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

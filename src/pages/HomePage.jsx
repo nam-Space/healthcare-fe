@@ -22,6 +22,7 @@ const HomePage = () => (
             <ServiceCard title="Dịch vụ bệnh nhân🧑‍⚕️" path="/patients" />
             <ServiceCard title="Dịch vụ bác sỹ👨‍⚕️" path="/doctors" />
             <ServiceCard title="Dịch vụ dược sỹ💊" path="/pharmacists" />
+            <ServiceCard title="Dịch vụ chatbot🤖" path="/chatbot" />
         </Row>
     </Container>
 );
