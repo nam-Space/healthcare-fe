@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { callCreateAppointment } from "config/api";
+import useGetAppointmentByPatientId from "hooks/useGetAppointmentByPatientId";
+import useGetDoctors from "hooks/useGetDoctor";
+import { useContext, useState } from "react";
 import {
     Badge,
     Button,
@@ -12,10 +15,14 @@ import {
     Tabs,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { UserContext } from "utils/UserContext";
+import dayjs from "dayjs";
+import { getIconStatus } from "utils/getIconStatus";
+import AppointmentTab from "components/AppointmentTab";
 
 const PatientPage = () => {
     const [key, setKey] = useState("appointments");
-
     return (
         <Container className="py-5">
             <div
@@ -32,58 +39,7 @@ const PatientPage = () => {
             </div>
             <Tabs activeKey={key} onSelect={(k) => setKey(k)} className="mb-3">
                 <Tab eventKey="appointments" title="Đặt lịch khám">
-                    <Card className="p-4">
-                        <Form style={{ marginBottom: 30 }}>
-                            <Form.Group className="mb-3">
-                                <Form.Label>Bác sĩ</Form.Label>
-                                <Form.Select>
-                                    <option>Chọn bác sĩ</option>
-                                </Form.Select>
-                            </Form.Group>
-                            <Form.Group className="mb-3">
-                                <Form.Label>Thời gian</Form.Label>
-                                <Form.Control type="datetime-local" />
-                            </Form.Group>
-                            <Button variant="success">Thêm mới</Button>
-                        </Form>
-                        <Table striped bordered hover>
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Bác sỹ</th>
-                                    <th>Thời gian</th>
-                                    <th>Trạng thái</th>
-                                    <th>Hành động</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Nguyễn Văn A</td>
-                                    <td>12/2025</td>
-                                    <td>
-                                        <Badge bg="success">Thành công</Badge>
-                                    </td>
-                                    <td>
-                                        <div
-                                            style={{
-                                                display: "flex",
-                                                alignItems: "center",
-                                                gap: 10,
-                                            }}
-                                        >
-                                            <Button variant="warning">
-                                                Sửa
-                                            </Button>
-                                            <Button variant="danger">
-                                                Xóa
-                                            </Button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </Table>
-                    </Card>
+                    <AppointmentTab />
                 </Tab>
                 <Tab eventKey="prescriptions" title="Đơn thuốc">
                     <Card className="p-4">

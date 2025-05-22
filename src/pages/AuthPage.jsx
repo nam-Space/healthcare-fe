@@ -22,7 +22,7 @@ const AuthPage = () => {
                             <LoginForm />
                         </Tab>
                         <Tab eventKey="register" title="Đăng ký">
-                            <RegisterForm />
+                            <RegisterForm setKey={setKey} />
                         </Tab>
                     </Tabs>
                 </Card.Body>
