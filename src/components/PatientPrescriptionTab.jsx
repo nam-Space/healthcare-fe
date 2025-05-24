@@ -18,8 +18,10 @@ const PrescriptionTab = () => {
                         <th>Ngày</th>
                         <th>Bác sĩ</th>
                         <th>Tên thuốc</th>
-                        <th>Dành cho bệnh</th>
                         <th>Số lượng</th>
+                        <th>Dành cho bệnh</th>
+                        <th>Liều lượng</th>
+                        <th>Hướng dẫn</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,10 +34,12 @@ const PrescriptionTab = () => {
                             </td>
                             <td>{prescription.doctor_info.full_name}</td>
                             <td>{prescription.medicine_name}</td>
+                            <td>{prescription.quantity}</td>
                             <td>
                                 {prescription.medical_record_info.diagnosis}
                             </td>
                             <td>{prescription.dosage}</td>
+                            <td>{prescription.instructions}</td>
                         </tr>
                     ))}
                 </tbody>
