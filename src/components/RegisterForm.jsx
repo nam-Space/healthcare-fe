@@ -1,6 +1,7 @@
 import { callRegister } from "config/api";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 const RegisterForm = (props) => {
     const { setKey } = props;
@@ -16,10 +17,16 @@ const RegisterForm = (props) => {
     });
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        const res = await callRegister(form);
-        if (res) {
-            setKey("login");
+        try {
+            e.preventDefault();
+            const res = await callRegister(form);
+            if (res) {
+                setKey("login");
+            }
+        } catch (error) {
+            toast.error(`Mất kết nối`, {
+                position: "bottom-right",
+            });
         }
     };
 

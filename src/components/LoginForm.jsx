@@ -4,6 +4,7 @@ import _ from "lodash";
 import { useContext, useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { UserContext } from "utils/UserContext";
 
 const LoginForm = () => {
@@ -18,24 +19,30 @@ const LoginForm = () => {
     }, [user]);
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        const res = await callLogin(form);
-        if (res) {
-            const { access, refresh } = res;
-            const resAcc = await callGetAccount({
-                headers: {
-                    Authorization: "Bearer " + access,
-                },
+        try {
+            e.preventDefault();
+            const res = await callLogin(form);
+            if (res) {
+                const { access, refresh } = res;
+                const resAcc = await callGetAccount({
+                    headers: {
+                        Authorization: "Bearer " + access,
+                    },
+                });
+                setUser(resAcc);
+                localStorage.setItem(
+                    "currentUser-healthcare",
+                    JSON.stringify({
+                        ...resAcc,
+                        access,
+                    })
+                );
+                navigate("/");
+            }
+        } catch (error) {
+            toast.error(`Mất kết nối`, {
+                position: "bottom-right",
             });
-            setUser(resAcc);
-            localStorage.setItem(
-                "currentUser-healthcare",
-                JSON.stringify({
-                    ...resAcc,
-                    access,
-                })
-            );
-            navigate("/");
         }
     };
 

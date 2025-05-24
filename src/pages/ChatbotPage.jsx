@@ -1,7 +1,12 @@
-import { Button, Card, Container, Form } from "react-bootstrap";
+import ChatbotDiabetesTab from "components/ChatbotDiabetesTab";
+import ChatbotGeneralTab from "components/ChatbotGeneralTab";
+import { useState } from "react";
+import { Button, Card, Container, Form, Tab, Tabs } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const ChatbotPage = () => {
+    const [key, setKey] = useState("general");
+
     return (
         <Container className="py-5">
             <div
@@ -16,23 +21,17 @@ const ChatbotPage = () => {
                     <Button variant="secondary">Quay lại</Button>
                 </Link>
             </div>
-            <Card className="p-4 mb-3">
-                <p>
-                    Xin chào! Tôi là trợ lý ảo của bạn. Hãy đặt câu hỏi liên
-                    quan đến sức khỏe để tôi có thể hỗ trợ.
-                </p>
-                <Form>
-                    <Form.Group className="mb-3">
-                        <Form.Label>Câu hỏi của bạn</Form.Label>
-                        <Form.Control
-                            as="textarea"
-                            rows={3}
-                            placeholder="Ví dụ: Tôi nên uống thuốc gì khi bị đau đầu?"
-                        />
-                    </Form.Group>
-                    <Button variant="primary">Gửi</Button>
-                </Form>
-            </Card>
+            <Tabs activeKey={key} onSelect={(k) => setKey(k)} className="mb-3">
+                <Tab eventKey="general" title="Chatbot tổng quan">
+                    <ChatbotGeneralTab />
+                </Tab>
+                <Tab
+                    eventKey="diabetes"
+                    title="Chatbot dự đoán bệnh tiểu đường"
+                >
+                    <ChatbotDiabetesTab />
+                </Tab>
+            </Tabs>
         </Container>
     );
 };
