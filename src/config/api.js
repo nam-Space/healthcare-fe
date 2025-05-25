@@ -2,6 +2,7 @@ import axios from "config/axios.customize";
 import axios8002 from "config/axios8002.customize";
 import axios8003 from "config/axios8003.customize";
 import axios8004 from "config/axios8004.customize";
+import axios8005 from "config/axios8005.customize";
 
 // user
 export const callLogin = ({ username, password }) => {
@@ -129,4 +130,12 @@ export const callUpdateDrugDistribution = (id, data) => {
 
 export const callDeleteDrugDistribution = (id) => {
     return axios8004.delete(`/api/drugdistributions/${id}/`)
+}
+
+export const callAskChatbotVer1 = (data) => {
+    return axios8005.post(`/api/chatbot/ver1/ask`, { ...data })
+}
+
+export const callAskChatbotVer2 = (data) => {
+    return axios8005.post(`/api/chatbot/ver2/ask`, { ...data })
 }

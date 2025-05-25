@@ -1,3 +1,4 @@
+import { callAskChatbotVer2 } from "config/api";
 import React, { useState } from "react";
 import { Container, Form, Button, Card, Alert } from "react-bootstrap";
 
@@ -13,7 +14,6 @@ function ChatbotDiabetesTab() {
     });
 
     const [chatLog, setChatLog] = useState([]);
-    const [result, setResult] = useState(null);
 
     const handleChange = (e) => {
         setFormData({
@@ -55,22 +55,12 @@ function ChatbotDiabetesTab() {
         );
 
         try {
-            const response = await fetch("http://127.0.0.1:8000/predict/", {
-                // Django thường dùng port 8000
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            });
+            const response = await callAskChatbotVer2(formData);
 
-            const data = await response.json();
-            const { predicted_disease, disease_info } = data;
+            const { predicted_disease, disease_info } = response;
 
             displayMessage(`Dự đoán: ${predicted_disease}`, "bot");
             displayMessage(`Thông tin về bệnh: ${disease_info}`, "bot");
-
-            setResult({ predicted_disease, disease_info });
         } catch (error) {
             displayMessage("Có lỗi xảy ra! Vui lòng thử lại.", "bot");
         }
@@ -186,14 +176,6 @@ function ChatbotDiabetesTab() {
                         </Button>
                     </Form>
                 </Card>
-
-                {result && (
-                    <Alert variant="info" className="mt-3">
-                        <strong>Dự đoán:</strong> {result.predicted_disease}{" "}
-                        <br />
-                        <strong>Thông tin:</strong> {result.disease_info}
-                    </Alert>
-                )}
             </Container>
         </Card>
     );
