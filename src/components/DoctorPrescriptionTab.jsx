@@ -253,11 +253,11 @@ const DoctorPrescriptionTab = () => {
                     {prescriptions.map((prescription, index) => (
                         <tr key={index}>
                             <td>{prescription.id}</td>
-                            <td>{prescription.patient_info.full_name}</td>
+                            <td>{prescription?.patient_info?.full_name}</td>
                             <td>{prescription.medicine_name}</td>
                             <td>{prescription.quantity}</td>
                             <td>
-                                {prescription.medical_record_info.diagnosis}
+                                {prescription?.medical_record_info?.diagnosis}
                             </td>
                             <td>{prescription.dosage}</td>
                             <td>{prescription.instructions}</td>

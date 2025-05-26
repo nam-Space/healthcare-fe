@@ -160,8 +160,8 @@ const DrugDistributionTab = () => {
                     {drugDistributions.map((drugDistribution, index) => (
                         <tr key={index}>
                             <td>{drugDistribution.id}</td>
-                            <td>{drugDistribution.doctor_info.full_name}</td>
-                            <td>{drugDistribution.drug_info.name}</td>
+                            <td>{drugDistribution?.doctor_info?.full_name}</td>
+                            <td>{drugDistribution?.drug_info?.name}</td>
                             <td>{drugDistribution.quantity}</td>
                             <td>
                                 <div
@@ -178,11 +178,11 @@ const DrugDistributionTab = () => {
                                                 ...form,
                                                 id: drugDistribution.id,
                                                 doctor_id:
-                                                    drugDistribution.doctor_info
-                                                        .id,
+                                                    drugDistribution
+                                                        ?.doctor_info?.id,
                                                 drug_type_id:
-                                                    drugDistribution.drug_info
-                                                        .id,
+                                                    drugDistribution?.drug_info
+                                                        ?.id,
                                                 quantity:
                                                     drugDistribution.quantity,
                                                 isEdit: true,

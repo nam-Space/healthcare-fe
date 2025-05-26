@@ -28,7 +28,7 @@ const MedicalReportTab = () => {
                                     "YYYY/MM/DD HH:mm:ss"
                                 )}
                             </td>
-                            <td>{medicalReport.doctor_info.full_name}</td>
+                            <td>{medicalReport?.doctor_info?.full_name}</td>
                             <td>{medicalReport.diagnosis}</td>
                             <td>{medicalReport.description}</td>
                         </tr>

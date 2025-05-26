@@ -32,11 +32,11 @@ const PrescriptionTab = () => {
                                     "YYYY/MM/DD HH:mm:ss"
                                 )}
                             </td>
-                            <td>{prescription.doctor_info.full_name}</td>
+                            <td>{prescription?.doctor_info?.full_name}</td>
                             <td>{prescription.medicine_name}</td>
                             <td>{prescription.quantity}</td>
                             <td>
-                                {prescription.medical_record_info.diagnosis}
+                                {prescription?.medical_record_info?.diagnosis}
                             </td>
                             <td>{prescription.dosage}</td>
                             <td>{prescription.instructions}</td>

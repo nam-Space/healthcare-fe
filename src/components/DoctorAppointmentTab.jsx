@@ -54,7 +54,7 @@ const DoctorAppointmentTab = () => {
                                     "YYYY/MM/DD HH:mm:ss"
                                 )}
                             </td>
-                            <td>{appointment.patient_info.full_name}</td>
+                            <td>{appointment?.patient_info?.full_name}</td>
                             <td>{getIconStatus(appointment.status)}</td>
                             <td>
                                 {appointment.status === STATUS.PENDING && (

@@ -139,7 +139,7 @@ const AppointmentTab = () => {
                     {appointments.map((appointment, index) => (
                         <tr key={index}>
                             <td>{appointment.id}</td>
-                            <td>{appointment.doctor_info.full_name}</td>
+                            <td>{appointment?.doctor_info?.full_name}</td>
                             <td>
                                 {dayjs(appointment.appointment_time).format(
                                     "YYYY/MM/DD HH:mm:ss"
@@ -161,7 +161,8 @@ const AppointmentTab = () => {
                                                 ...form,
                                                 id: appointment.id,
                                                 doctor_id:
-                                                    appointment.doctor_info.id,
+                                                    appointment?.doctor_info
+                                                        ?.id,
                                                 appointment_time:
                                                     appointment.appointment_time,
                                                 isEdit: true,

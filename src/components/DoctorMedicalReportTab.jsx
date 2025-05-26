@@ -156,7 +156,7 @@ const DoctorMedicalReportTab = () => {
                     {medicalReports.map((medicalReport, index) => (
                         <tr key={index}>
                             <td>{medicalReport.id}</td>
-                            <td>{medicalReport.patient_info.full_name}</td>
+                            <td>{medicalReport?.patient_info?.full_name}</td>
                             <td>{medicalReport.diagnosis}</td>
                             <td>{medicalReport.description}</td>
                             <td>
