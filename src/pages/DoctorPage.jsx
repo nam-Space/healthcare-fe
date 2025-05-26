@@ -1,5 +1,6 @@
 import DoctorAppointmentTab from "components/DoctorAppointmentTab";
 import DoctorMedicalReportTab from "components/DoctorMedicalReportTab";
+import DoctorPredictionBySystom from "components/DoctorPredictionBySystom";
 import DoctorPrescriptionTab from "components/DoctorPrescriptionTab";
 import { useState } from "react";
 import {
@@ -39,15 +40,7 @@ const DoctorPage = () => {
                     <DoctorMedicalReportTab />
                 </Tab>
                 <Tab eventKey="symptom" title="Dự đoán triệu chứng">
-                    <Card className="p-4">
-                        <Form>
-                            <Form.Group className="mb-3">
-                                <Form.Label>Triệu chứng</Form.Label>
-                                <Form.Control as="textarea" rows={3} />
-                            </Form.Group>
-                            <Button variant="primary">Dự đoán</Button>
-                        </Form>
-                    </Card>
+                    <DoctorPredictionBySystom />
                 </Tab>
                 <Tab eventKey="prescription" title="Kê đơn">
                     <DoctorPrescriptionTab />
