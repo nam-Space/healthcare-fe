@@ -3,6 +3,7 @@ import axios8002 from "config/axios8002.customize";
 import axios8003 from "config/axios8003.customize";
 import axios8004 from "config/axios8004.customize";
 import axios8005 from "config/axios8005.customize";
+import axios8006 from "config/axios8006.customize";
 
 // user
 export const callLogin = ({ username, password }) => {
@@ -35,69 +36,69 @@ export const callGetPatients = () => {
 }
 
 export const callCreateAppointment = (data) => {
-    return axios8002.post(`/api/appointment/patients/appointments`, {
+    return axios8002.post(`/api/patients/appointments`, {
         ...data
     });
 }
 
 export const callGetAppointmentByPatientId = (id) => {
-    return axios8002.get(`/api/appointment/patients/appointments/patient/${id}`);
+    return axios8002.get(`/api/patients/appointments/patient/${id}`);
 }
 
 export const callGetAppointmentsByDoctorId = (id) => {
-    return axios8002.get(`/api/appointment/patients/appointments/doctor/${id}`);
+    return axios8002.get(`/api/patients/appointments/doctor/${id}`);
 }
 
 export const callUpdateAppointmentStatusById = (id, data) => {
-    return axios8002.put(`/api/appointment/patients/appointments/${id}/status`, { ...data });
+    return axios8002.put(`/api/patients/appointments/${id}/status`, { ...data });
 }
 
 export const callUpdateAppointmentById = (id, data) => {
-    return axios8002.put(`/api/appointment/appointments/${id}/update/`, { ...data });
+    return axios8002.put(`/api/appointments/${id}/update/`, { ...data });
 }
 
 export const callDeleteAppointmentById = (id) => {
-    return axios8002.delete(`/api/appointment/delete/${id}`);
+    return axios8002.delete(`/api/delete/${id}`);
 }
 
 export const callGetMedicalReportsByPatientId = id => {
-    return axios8003.get(`/api/medical/medical-records/patient/${id}/`)
+    return axios8002.get(`/api/patient/medical-records/${id}/`)
 }
 
 export const callAddMedicalRecord = data => {
-    return axios8003.post(`/api/medical/medical-records/`, { ...data })
+    return axios8006.post(`/api/medical-records/`, { ...data })
 }
 
 export const callUpdateMedicalRecord = (id, data) => {
-    return axios8003.put(`/api/medical/medical-records/${id}/`, { ...data })
+    return axios8006.put(`/api/medical-records/${id}/`, { ...data })
 }
 
 export const callDeleteMedicalRecord = (id) => {
-    return axios8003.delete(`/api/medical/delete-medical-record/${id}/`)
+    return axios8006.delete(`/api/delete-medical-record/${id}/`)
 }
 
 export const callGetMedicalReportsByDoctorId = id => {
-    return axios8003.get(`/api/medical/list-medical-records-by-doctor/${id}/`)
+    return axios8006.get(`/api/list-medical-records-by-doctor/${id}/`)
 }
 
 export const callCreatePrescription = data => {
-    return axios8003.post(`/api/medical/prescriptions/`, { ...data })
+    return axios8006.post(`/api/prescriptions/`, { ...data })
 }
 
 export const callUpdatePrescription = (id, data) => {
-    return axios8003.put(`/api/medical/prescriptions/${id}/`, { ...data })
+    return axios8006.put(`/api/prescriptions/${id}/`, { ...data })
 }
 
 export const callDeletePrescription = (id) => {
-    return axios8003.delete(`/api/medical/delete-prescription/${id}/`)
+    return axios8006.delete(`/api/delete-prescription/${id}/`)
 }
 
 export const callGetPrescriptionsByPatientId = id => {
-    return axios8003.get(`/api/medical/prescriptions/patient/${id}/`)
+    return axios8002.get(`/api/patient/prescriptions/${id}/`)
 }
 
 export const callGetPrescriptionsByDoctorId = id => {
-    return axios8003.get(`/api/medical/list-prescriptions-by-doctor/${id}/`)
+    return axios8006.get(`/api/list-prescriptions-by-doctor/${id}/`)
 }
 
 export const callGetDrugs = () => {
