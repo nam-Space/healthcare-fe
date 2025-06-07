@@ -22,23 +22,28 @@ const LoginForm = () => {
         try {
             e.preventDefault();
             const res = await callLogin(form);
-            if (res) {
-                const { access, refresh } = res;
-                const resAcc = await callGetAccount({
-                    headers: {
-                        Authorization: "Bearer " + access,
-                    },
-                });
-                setUser(resAcc);
-                localStorage.setItem(
-                    "currentUser-healthcare",
-                    JSON.stringify({
-                        ...resAcc,
-                        access,
-                    })
-                );
-                navigate("/");
+            if (
+                res.detail &&
+                res.detail ==
+                    "No active account found with the given credentials"
+            ) {
+                return;
             }
+            const { access, refresh } = res;
+            const resAcc = await callGetAccount({
+                headers: {
+                    Authorization: "Bearer " + access,
+                },
+            });
+            setUser(resAcc);
+            localStorage.setItem(
+                "currentUser-healthcare",
+                JSON.stringify({
+                    ...resAcc,
+                    access,
+                })
+            );
+            navigate("/");
         } catch (error) {
             toast.error(`Mất kết nối`, {
                 position: "bottom-right",
